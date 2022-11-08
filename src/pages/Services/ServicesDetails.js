@@ -23,7 +23,7 @@ const ServicesDetails = ({service}) => {
           </Link>
         </div>
         <Link rel='noopener noreferrer' to={`/services/${_id}`}>
-          <button className="btn-ghost hover:bg-purple-900 text-white p-2 rounded-lg">See All</button>
+          <button className="btn-ghost hover:bg-purple-900 text-white p-2 rounded-lg">View Details</button>
         </Link>
       </div>
       <div className='space-y-4' bis_skin_checked='1'>
