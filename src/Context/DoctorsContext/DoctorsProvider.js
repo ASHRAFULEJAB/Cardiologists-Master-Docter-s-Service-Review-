@@ -1,22 +1,20 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react'
 import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    onAuthStateChanged,
-    signInWithEmailAndPassword,
-    signOut,
-    GoogleAuthProvider,
-    signInWithPopup
-  } from 'firebase/auth'
+  getAuth,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+  signInWithPopup,
+  updateProfile,
+} from 'firebase/auth'
 import app from '../../firebase/firebaseConfig'
-  
-const auth = getAuth(app)
-const googleProvider = new GoogleAuthProvider()
 
-export const  DoctorsContext = createContext()
+const auth = getAuth(app)
+
+export const DoctorsContext = createContext()
 const DoctorsProvider = ({ children }) => {
-    
-    const [userDoctor, setUserDoctor] = useState(null)
+  const [userDoctor, setUserDoctor] = useState(null)
   const [loader, setLoader] = useState(true)
 
   const register = (email, password) => {
@@ -27,8 +25,11 @@ const DoctorsProvider = ({ children }) => {
     setLoader(true)
     return signInWithEmailAndPassword(auth, email, password)
   }
-  const GoogleLogin = () => {
-    return signInWithPopup(auth,googleProvider)
+  const GoogleLogin = (provider) => {
+    return signInWithPopup(auth, provider)
+  }
+  const updateDoctorProfile = (profile) => {
+    return updateProfile(auth.currentUser, profile)
   }
   const userLogout = () => {
     localStorage.removeItem('token')
@@ -38,6 +39,7 @@ const DoctorsProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUserDoctor(currentUser)
+
       setLoader(false)
     })
     return () => {
@@ -45,20 +47,21 @@ const DoctorsProvider = ({ children }) => {
     }
   }, [])
 
-    const DoctorInfo = {
-        loader,
-        userDoctor,
-        register,
-        userLogin,
-        userLogout,
-        GoogleLogin
+  const DoctorInfo = {
+    loader,
+    userDoctor,
+    register,
+    userLogin,
+    userLogout,
+    GoogleLogin,
+    updateDoctorProfile,
+  }
+
+  return (
+    <DoctorsContext.Provider value={DoctorInfo}>
+      {children}
+    </DoctorsContext.Provider>
+  )
 }
 
-    return (
-        <DoctorsContext.Provider value={DoctorInfo}>
-            {children}
-        </DoctorsContext.Provider>
-    );
-};
-
-export default DoctorsProvider;
+export default DoctorsProvider

@@ -13,7 +13,7 @@ const Home = () => {
 
   return (
     <>
-      <div className='carousel w-full mb-5 mt-6'>
+      {/* <div className='carousel w-full mb-5 mt-6'>
         <div id='slide1' className='carousel-item relative w-full'>
           <img
             alt=''
@@ -74,7 +74,7 @@ const Home = () => {
             </a>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className='grid lg:grid-cols-3 grid-cols-1'>
       {
           services.map(service => <ServicesHomePage

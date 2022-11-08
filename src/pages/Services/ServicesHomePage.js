@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const ServicesHomePage = ({ service }) => {
-  console.log(service)
+//   console.log(service)
   const { description, img, price, rating, title } = service
   return (
     <div

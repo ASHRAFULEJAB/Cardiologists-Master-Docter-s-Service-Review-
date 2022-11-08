@@ -1,9 +1,50 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Lottie from 'lottie-react'
 import cardiologists1 from '../../assets/cardiologist1.json'
+import { DoctorsContext } from '../../Context/DoctorsContext/DoctorsProvider'
+import { GoogleAuthProvider } from 'firebase/auth'
 
 const Login = () => {
+  const { userLogin, GoogleLogin } = useContext(DoctorsContext)
+  const googleProvider = new GoogleAuthProvider()
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
+
+  const handleUserLogin = (e) => {
+    e.preventDefault()
+    const form = e.target
+    const email = form.email.value
+    const password = form.password.value
+    userLogin(email, password)
+      .then((result) => {
+        const user = result.user
+        console.log(user)
+        alert('login sucessfull')
+
+        form.reset()
+
+        navigate(from, { replace: true })
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  }
+
+  const handleGoogleLogin = () => {
+    GoogleLogin(googleProvider)
+      .then((result) => {
+        const user = result.user
+        console.log(user)
+        if (user?.uid) {
+          navigate(from, { replace: true })
+        }
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  }
   return (
     <div className='grid lg:grid-cols-2 grid-cols-1'>
       <div
@@ -12,12 +53,12 @@ const Login = () => {
       >
         <h1 className='text-2xl font-bold text-center'>Login</h1>
         <form
-          novalidate=''
+          onSubmit={handleUserLogin}
           action=''
           className='space-y-6 ng-untouched ng-pristine ng-valid'
         >
           <div className='space-y-1 text-sm' bis_skin_checked='1'>
-            <label for='username' className='block dark:text-gray-400'>
+            <label htmlFor='username' className='block dark:text-gray-400'>
               Email
             </label>
             <input
@@ -29,7 +70,7 @@ const Login = () => {
             />
           </div>
           <div className='space-y-1 text-sm' bis_skin_checked='1'>
-            <label for='password' className='block dark:text-gray-400'>
+            <label htmlFor='password' className='block dark:text-gray-400'>
               Password
             </label>
             <input
@@ -48,7 +89,10 @@ const Login = () => {
               </Link>
             </div>
           </div>
-          <button className='block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400'>
+          <button
+            type='submit'
+            className='block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400'
+          >
             Log in
           </button>
         </form>
@@ -66,7 +110,11 @@ const Login = () => {
           ></div>
         </div>
         <div className='flex justify-center space-x-4' bis_skin_checked='1'>
-          <button aria-label='Log in with Google' className='p-3 rounded-sm'>
+          <button
+            onClick={handleGoogleLogin}
+            aria-label='Log in with Google'
+            className='p-3 rounded-sm'
+          >
             <svg
               xmlns='http://www.w3.org/2000/svg'
               viewBox='0 0 32 32'
