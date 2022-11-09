@@ -26,12 +26,15 @@ const DoctorsProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password)
   }
   const GoogleLogin = (provider) => {
+    setLoader(true)
     return signInWithPopup(auth, provider)
   }
   const updateDoctorProfile = (profile) => {
+    setLoader(true)
     return updateProfile(auth.currentUser, profile)
   }
   const userLogout = () => {
+    setLoader(true)
     localStorage.removeItem('token')
     return signOut(auth)
   }

@@ -44,7 +44,7 @@ const ServicesDetails = ({service}) => {
             </h3>
           </Link>
           <p className='leading-snug dark:text-gray-400'>
-            {description.slice(0, 100)}
+            {description?.slice(0,100)}
           </p>
         </div>
       </div>
