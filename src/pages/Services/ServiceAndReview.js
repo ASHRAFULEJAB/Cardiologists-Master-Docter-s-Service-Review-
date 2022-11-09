@@ -1,10 +1,18 @@
 import React from 'react'
 import { Link, useLoaderData } from 'react-router-dom'
+import ReviewServicePage from './ReviewServicePage'
 
 const ServiceAndReview = () => {
   const serviceLoader = useLoaderData()
-  console.log(serviceLoader)
-  const { description, img, price, rating, title, treatment } = serviceLoader
+  // const [review, setReview] = useState([])
+  const { description, img, price, rating, title, treatment, service_id } =
+    serviceLoader
+// console.log(service_id)
+//   useEffect(() => {
+//     fetch(`http://localhost:5000/reviews?service-id=${service_id}`)
+//       .then((res) => res.json())
+//       .then((data) =>console.log(data))
+//   }, [])
 
   return (
     <div className='grid lg:grid-cols-2 grid-cols-1'>
@@ -117,6 +125,10 @@ const ServiceAndReview = () => {
           </div>
         </div>
       </div>
+          <div>
+             
+          <ReviewServicePage></ReviewServicePage>
+          </div>
     </div>
   )
 }
