@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { PhotoProvider, PhotoView } from 'react-photo-view'
+import 'react-photo-view/dist/react-photo-view.css'
+
 
 const ServicesDetails = ({service}) => {
     const {_id, description, img, price, rating, title } = service
@@ -27,12 +30,16 @@ const ServicesDetails = ({service}) => {
         </Link>
       </div>
       <div className='space-y-4' bis_skin_checked='1'>
-        <div className='space-y-2' bis_skin_checked='1'>
+            <div className='space-y-2' bis_skin_checked='1'>
+            <PhotoProvider>
+            <PhotoView src={img}>
           <img
             src={img}
             alt=''
             className='block object-cover object-center w-full rounded-md h-72 dark:bg-gray-500'
-          />
+                  />
+                      </PhotoView>
+          </PhotoProvider>
           <div className='flex items-center text-xs' bis_skin_checked='1'>
             <span className='text-white font-bold'>Rating: {rating}</span>
           </div>

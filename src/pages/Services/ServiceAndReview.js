@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link, useLoaderData } from 'react-router-dom'
 import ReviewServicePage from './ReviewServicePage'
+import { PhotoProvider, PhotoView } from 'react-photo-view'
+import 'react-photo-view/dist/react-photo-view.css'
 
 const ServiceAndReview = () => {
   const serviceLoader = useLoaderData()
@@ -41,11 +43,15 @@ const ServiceAndReview = () => {
           </div>
         </div>
         <div bis_skin_checked='1'>
+        <PhotoProvider>
+            <PhotoView src={img}>
           <img
             src={img}
             alt=''
             className='object-cover w-full mb-4 h-60 sm:h-96 dark:bg-gray-500'
-          />
+              />
+              </PhotoView>
+          </PhotoProvider>
           <h2 className='mb-1 text-xl font-semibold'>{title}</h2>
           <p className='text-sm dark:text-gray-400'>{description}</p>
         </div>

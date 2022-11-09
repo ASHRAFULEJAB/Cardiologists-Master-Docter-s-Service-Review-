@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import ServicesHomePage from '../Services/ServicesHomePage'
+import imgae1 from '../../assets/images/pic1.jpg'
+import imgae2 from '../../assets/images/pic2.png'
+import imgae3 from '../../assets/images/pic3.jpg'
+import imgae4 from '../../assets/images/pic4.jpg'
 
 const Home = () => {
-
   const [services, setServices] = useState([])
-  
+
   useEffect(() => {
     fetch('http://localhost:5000/services-home')
       .then((res) => res.json())
@@ -76,13 +79,41 @@ const Home = () => {
         </div>
       </div> */}
       <div className='grid lg:grid-cols-3 grid-cols-1'>
-      {
-          services.map(service => <ServicesHomePage
+        {services.map((service) => (
+          <ServicesHomePage
             key={service._id}
             service={service}
-          ></ServicesHomePage>)
-      }
-     </div>
+          ></ServicesHomePage>
+        ))}
+      </div>
+      <div className='carousel w-full'>
+        <div id='item1' className='carousel-item w-full'>
+          <img  src={imgae1}  alt=""className='w-full' />
+        </div>
+        <div id='item2' className='carousel-item w-full'>
+          <img src={imgae2}  alt="" className='w-full' />
+        </div>
+        <div id='item3' className='carousel-item w-full'>
+          <img src={imgae3}  alt="" className='w-full' />
+        </div>
+        <div id='item4' className='carousel-item w-full'>
+          <img src={imgae4}  alt="" className='w-full' />
+        </div>
+      </div>
+      <div className='flex justify-center w-full py-2 gap-2'>
+        <a href='#item1' className='btn btn-xs'>
+          1
+        </a>
+        <a href='#item2' className='btn btn-xs'>
+          2
+        </a>
+        <a href='#item3' className='btn btn-xs'>
+          3
+        </a>
+        <a href='#item4' className='btn btn-xs'>
+          4
+        </a>
+      </div>
     </>
   )
 }
