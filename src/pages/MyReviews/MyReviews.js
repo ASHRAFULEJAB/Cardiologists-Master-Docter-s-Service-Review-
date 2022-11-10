@@ -1,18 +1,29 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { Navigate } from 'react-router-dom'
 import { DoctorsContext } from '../../Context/DoctorsContext/DoctorsProvider'
 import MyReviewsCard from './MyReviewsCard'
 
 const MyReviews = () => {
-  const { userDoctor } = useContext(DoctorsContext)
+  const { userDoctor,userLogout } = useContext(DoctorsContext)
   const [doctorReview, setDoctorReview] = useState([])
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?email=${userDoctor?.email}`)
-      .then((res) => res.json())
+    fetch(`http://localhost:5000/reviews?email=${userDoctor?.email}`,{
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 403 || res.status === 401) {
+          return userLogout()
+         
+        }
+        return res.json()
+      })
       .then((data) => {
         setDoctorReview(data)
         console.log(data)
       })
-  }, [userDoctor?.email])
+  }, [userDoctor?.email,userLogout])
 
   const handleReviewDelete = (id) => {
     const procced = window.confirm('Are you sure you want to delete this order')

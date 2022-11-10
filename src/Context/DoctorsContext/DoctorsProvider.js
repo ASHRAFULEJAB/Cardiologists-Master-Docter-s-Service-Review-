@@ -34,7 +34,7 @@ const DoctorsProvider = ({ children }) => {
     return updateProfile(auth.currentUser, profile)
   }
   const userLogout = () => {
-    setLoader(true)
+    setLoader(false)
     localStorage.removeItem('token')
     return signOut(auth)
   }
@@ -53,6 +53,7 @@ const DoctorsProvider = ({ children }) => {
   const DoctorInfo = {
     loader,
     userDoctor,
+    setLoader,
     register,
     userLogin,
     userLogout,

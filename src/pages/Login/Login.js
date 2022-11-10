@@ -4,6 +4,7 @@ import Lottie from 'lottie-react'
 import cardiologists1 from '../../assets/cardiologist1.json'
 import { DoctorsContext } from '../../Context/DoctorsContext/DoctorsProvider'
 import { GoogleAuthProvider } from 'firebase/auth'
+import { setReviewAuthToken } from '../../utils/reviewAuth'
 
 const Login = () => {
   const { userLogin, GoogleLogin } = useContext(DoctorsContext)
@@ -20,11 +21,12 @@ const Login = () => {
     userLogin(email, password)
       .then((result) => {
         const user = result.user
-        console.log(user)
         alert('login sucessfull')
-
+        
         form.reset()
-
+        setReviewAuthToken(user)
+        console.log(user)
+        
         navigate(from, { replace: true })
       })
       .catch((e) => {
