@@ -1,7 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const MyReviewsCard = ({ review, handleReviewDelete, updateReviews }) => {
-  const { serviceName, message, _id,status } = review
+  const { serviceName, message, _id } = review
   return (
     <tr>
       <th>
@@ -25,38 +26,13 @@ const MyReviewsCard = ({ review, handleReviewDelete, updateReviews }) => {
           </svg>
         </button>
       </th>
-      <td>{status ? serviceName : 'Pending'}</td>
+      <td>{serviceName}</td>
       <td>{message.slice(0, 50)}</td>
       <td>
-        <button
-          onClick={() => updateReviews(_id)}
-          
-        >
-          
-          <label htmlFor='my-modal-6' className='btn btn-outline btn-success'>
-            Edit
-          </label>
-
-          
-          <input type='checkbox' id='my-modal-6' className='modal-toggle' />
-          <div className='modal modal-bottom sm:modal-middle'>
-            <div className='modal-box'>
-              <h3 className='font-bold text-lg'>
-                Congratulations random Internet user!
-              </h3>
-              <p className='py-4'>
-                You've been selected for a chance to get one year of
-                subscription to use Wikipedia for free!
-              </p>
-              <div className='modal-action'>
-                <label htmlFor='my-modal-6' className='btn'>
-                  Update
-                  
-                </label>
-              </div>
-            </div>
-          </div>
-        </button>
+        {' '}
+        <Link to={`/reviews/${_id}`}>
+          <button className='btn btn-outline btn-success'>Edit</button>
+        </Link>
       </td>
     </tr>
   )

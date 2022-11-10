@@ -5,6 +5,7 @@ import Blog from '../pages/Blog/Blog'
 import Home from '../pages/Home/Home'
 import Login from '../pages/Login/Login'
 import MyReviews from '../pages/MyReviews/MyReviews'
+import UpdateReview from '../pages/MyReviews/UpdateReview'
 import Register from '../pages/Register/Register'
 import ServiceAndReview from '../pages/Services/ServiceAndReview'
 import Services from '../pages/Services/Services'
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
       {
         path: '/my-reviews',
         element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>,
+      },
+      {
+        path: '/reviews/:id',
+        element:<UpdateReview></UpdateReview>
       },
       {
         path: '/add-service',

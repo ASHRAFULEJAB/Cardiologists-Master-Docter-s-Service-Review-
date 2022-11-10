@@ -23,7 +23,7 @@ const MyReviews = () => {
       })
       .then((data) => {
         setDoctorReview(data)
-        console.log(data)
+        // console.log(data)
       })
   }, [userDoctor?.email,userLogout])
 
@@ -38,7 +38,7 @@ const MyReviews = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data)
+          // console.log(data)
           if (data.deletedCount > 0) {
             const remaing = doctorReview.filter((or) => or._id !== id)
             setDoctorReview(remaing)
@@ -46,26 +46,27 @@ const MyReviews = () => {
         })
     }
   }
-  const updateReviews = (id) => {
-    fetch(`http://localhost:5000/reviews/${id}`, {
-      method: 'PATCH',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify({ status:'Approved' }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
-        if (data.modifiedCount > 0) {
-          const remaing = doctorReview.filter((ord) => ord._id !== id)
-          const approving = doctorReview.find((or) => or._id === id)
-          approving.status = 'Approved'
-          const orderRemain = [approving, ...remaing]
-          setDoctorReview(orderRemain)
-        }
-      })
-  }
+  // const updateReviews = (id) => {
+  //   fetch(`http://localhost:5000/reviews/${id}`, {
+  //     method: 'PATCH',
+  //     headers: {
+  //       'content-type': 'application/json',
+  //     },
+  //     body: JSON.stringify(doctorReview),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data)
+  //       if (data.modifiedCount > 0) {
+  //         const remaing = doctorReview.filter((ord) => ord._id !== id)
+  //         const approving = doctorReview.find((or) => or._id === id)
+  //         approving.status = 'Approved'
+  //         const orderRemain = [approving, ...remaing]
+  //         console.log(orderRemain)
+  //         setDoctorReview(orderRemain)
+  //       }
+  //     })
+  // }
   return (
     <div className='overflow-x-auto'>
       <table className='table w-full'>
@@ -83,7 +84,7 @@ const MyReviews = () => {
               key={review._id}
               review={review}
                   handleReviewDelete={handleReviewDelete}
-                  updateReviews={updateReviews}
+                  // updateReviews={updateReviews}
             ></MyReviewsCard>
           ))}
         </tbody>
