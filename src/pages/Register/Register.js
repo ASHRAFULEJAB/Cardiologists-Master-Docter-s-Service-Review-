@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom'
 import Lottie from 'lottie-react'
 import cardiologists2 from '../../assets/cardiologist2.json'
 import { DoctorsContext } from '../../Context/DoctorsContext/DoctorsProvider'
+import useTitle from '../../hooks/useTitle'
 
 const Register = () => {
   const { register, updateDoctorProfile } = useContext(DoctorsContext)
+  useTitle('Register')
   const handleRegister = (e) => {
     e.preventDefault()
     const form = e.target

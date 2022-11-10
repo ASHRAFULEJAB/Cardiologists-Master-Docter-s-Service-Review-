@@ -1,8 +1,10 @@
 import React from 'react'
 import { useLoaderData } from 'react-router-dom'
+import useTitle from '../../hooks/useTitle'
 
 const AddService = () => {
   const serviceLoader = useLoaderData()
+  useTitle('Add Service')
 
 
   const handleAddService = (e) => {

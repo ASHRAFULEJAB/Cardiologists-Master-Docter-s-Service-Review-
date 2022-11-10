@@ -4,9 +4,12 @@ import imgae1 from '../../assets/images/pic1.jpg'
 import imgae2 from '../../assets/images/pic2.png'
 import imgae3 from '../../assets/images/pic3.jpg'
 import imgae4 from '../../assets/images/pic4.jpg'
+import useTitle from '../../hooks/useTitle'
+import HomeDetails from './HomeDetails'
 
 const Home = () => {
   const [services, setServices] = useState([])
+  useTitle('Home')
 
   useEffect(() => {
     fetch('http://localhost:5000/services-home')
@@ -114,6 +117,7 @@ const Home = () => {
           4
         </a>
       </div>
+      <HomeDetails></HomeDetails>
     </>
   )
 }

@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import { DoctorsContext } from '../../Context/DoctorsContext/DoctorsProvider'
+import useTitle from '../../hooks/useTitle'
 import MyReviewsCard from './MyReviewsCard'
 
 const MyReviews = () => {
-  const { userDoctor,userLogout } = useContext(DoctorsContext)
+  const { userDoctor, userLogout } = useContext(DoctorsContext)
+  useTitle('My Review')
   const [doctorReview, setDoctorReview] = useState([])
   useEffect(() => {
     fetch(`http://localhost:5000/reviews?email=${userDoctor?.email}`,{
@@ -50,7 +52,7 @@ const MyReviews = () => {
       headers: {
         'content-type': 'application/json',
       },
-      body: JSON.stringify({ status: 'Approved' }),
+      body: JSON.stringify({ status:'Approved' }),
     })
       .then((res) => res.json())
       .then((data) => {

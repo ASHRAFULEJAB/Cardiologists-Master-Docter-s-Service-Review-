@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import ServicesDetails from './ServicesDetails';
 import { DoctorsContext } from '../../Context/DoctorsContext/DoctorsProvider'
+import useTitle from '../../hooks/useTitle';
 
 const Services = () => {
     const {loader,setLoader}=useContext(DoctorsContext)
-    const [servicesPage,setServicesPage]=useState([])
+    const [servicesPage, setServicesPage] = useState([])
+    useTitle('Service')
     useEffect(() => {
         fetch('http://localhost:5000/services')
           .then((res) => res.json())

@@ -3,9 +3,12 @@ import { Link, useLoaderData } from 'react-router-dom'
 import ReviewServicePage from './ReviewServicePage'
 import { PhotoProvider, PhotoView } from 'react-photo-view'
 import 'react-photo-view/dist/react-photo-view.css'
+import useTitle from '../../hooks/useTitle'
 
 const ServiceAndReview = () => {
   const serviceLoader = useLoaderData()
+  useTitle('Service Details')
+  console.log(serviceLoader)
   // const [review, setReview] = useState([])
   const { description, img, price, rating, title, treatment, service_id } =
     serviceLoader
@@ -60,7 +63,7 @@ const ServiceAndReview = () => {
             Treatment
           </h1>
           <hr />
-          {treatment.map((tr) => (
+          {serviceLoader?.treatment ? treatment.map((tr) => (
             <p key={tr.idx}>
               <span>
                 <ul className='m-3'>
@@ -69,7 +72,7 @@ const ServiceAndReview = () => {
                 </ul>
               </span>
             </p>
-          ))}
+          )):<></>}
         </div>
         <div className='flex flex-wrap justify-between' bis_skin_checked='1'>
           <div className='space-x-2' bis_skin_checked='1'>

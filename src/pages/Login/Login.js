@@ -5,10 +5,12 @@ import cardiologists1 from '../../assets/cardiologist1.json'
 import { DoctorsContext } from '../../Context/DoctorsContext/DoctorsProvider'
 import { GoogleAuthProvider } from 'firebase/auth'
 import { setReviewAuthToken } from '../../utils/reviewAuth'
+import useTitle from '../../hooks/useTitle'
 
 const Login = () => {
   const { userLogin, GoogleLogin } = useContext(DoctorsContext)
   const googleProvider = new GoogleAuthProvider()
+  useTitle('Login')
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
@@ -22,11 +24,11 @@ const Login = () => {
       .then((result) => {
         const user = result.user
         alert('login sucessfull')
-        
-        form.reset()
+
         setReviewAuthToken(user)
+        form.reset()
         console.log(user)
-        
+
         navigate(from, { replace: true })
       })
       .catch((e) => {
@@ -38,6 +40,7 @@ const Login = () => {
     GoogleLogin(googleProvider)
       .then((result) => {
         const user = result.user
+        setReviewAuthToken(user)
         console.log(user)
         if (user?.uid) {
           navigate(from, { replace: true })
