@@ -3,7 +3,7 @@ export const setReviewAuthToken = (user) => {
         email: user.email,
       }
 
-      fetch('http://localhost:5000/jwtToken', {
+      fetch('https://cardiologists-master-server.vercel.app/jwtToken', {
         method: 'POST',
         headers: {
           'content-type': 'application/json',

@@ -9,15 +9,17 @@ const MyReviews = () => {
   useTitle('My Review')
   const [doctorReview, setDoctorReview] = useState([])
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?email=${userDoctor?.email}`,{
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-    })
+    fetch(
+      `https://cardiologists-master-server.vercel.app/reviews?email=${userDoctor?.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 403 || res.status === 401) {
           return userLogout()
-         
         }
         return res.json()
       })
@@ -25,12 +27,12 @@ const MyReviews = () => {
         setDoctorReview(data)
         // console.log(data)
       })
-  }, [userDoctor?.email,userLogout])
+  }, [userDoctor?.email, userLogout])
 
   const handleReviewDelete = (id) => {
     const procced = window.confirm('Are you sure you want to delete this order')
     if (procced) {
-      fetch(`http://localhost:5000/reviews/${id}`, {
+      fetch(`https://cardiologists-master-server.vercel.app/reviews/${id}`, {
         method: 'DELETE',
         // headers: {
         //   authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -47,7 +49,7 @@ const MyReviews = () => {
     }
   }
   // const updateReviews = (id) => {
-  //   fetch(`http://localhost:5000/reviews/${id}`, {
+  //   fetch(`https://cardiologists-master-server.vercel.app/reviews/${id}`, {
   //     method: 'PATCH',
   //     headers: {
   //       'content-type': 'application/json',
@@ -83,8 +85,8 @@ const MyReviews = () => {
             <MyReviewsCard
               key={review._id}
               review={review}
-                  handleReviewDelete={handleReviewDelete}
-                  // updateReviews={updateReviews}
+              handleReviewDelete={handleReviewDelete}
+              // updateReviews={updateReviews}
             ></MyReviewsCard>
           ))}
         </tbody>

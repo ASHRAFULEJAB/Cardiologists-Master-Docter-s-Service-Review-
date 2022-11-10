@@ -8,13 +8,13 @@ import { setReviewAuthToken } from '../../utils/reviewAuth'
 import useTitle from '../../hooks/useTitle'
 
 const Login = () => {
-  const { userLogin, GoogleLogin } = useContext(DoctorsContext)
+  const { userLogin, GoogleLogin ,loader } = useContext(DoctorsContext)
   const googleProvider = new GoogleAuthProvider()
   useTitle('Login')
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
-
+ 
   const handleUserLogin = (e) => {
     e.preventDefault()
     const form = e.target
@@ -57,6 +57,9 @@ const Login = () => {
         bis_skin_checked='1'
       >
         <h1 className='text-2xl font-bold text-center'>Login</h1>
+        {
+          loader ? <><h1>Loading...</h1></> : <>
+            
         <form
           onSubmit={handleUserLogin}
           action=''
@@ -101,6 +104,8 @@ const Login = () => {
             Log in
           </button>
         </form>
+    </>
+}
         <div className='flex items-center pt-4 space-x-1' bis_skin_checked='1'>
           <div
             className='flex-1 h-px sm:w-16 dark:bg-gray-700'

@@ -1,11 +1,10 @@
 import React from 'react'
-import { useLoaderData } from 'react-router-dom'
+
 import useTitle from '../../hooks/useTitle'
 
 const AddService = () => {
-  const serviceLoader = useLoaderData()
+  
   useTitle('Add Service')
-
 
   const handleAddService = (e) => {
     e.preventDefault()
@@ -16,13 +15,13 @@ const AddService = () => {
     const description = form.description.value
 
     const service = {
-        // service: _id,
+      // service: _id,
       title: name,
       img: image,
       price: price,
       description: description,
     }
-    fetch('http://localhost:5000/services-home', {
+    fetch('https://cardiologists-master-server.vercel.app/services-home', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

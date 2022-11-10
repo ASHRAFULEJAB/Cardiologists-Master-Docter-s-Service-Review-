@@ -6,7 +6,7 @@ import { DoctorsContext } from '../../Context/DoctorsContext/DoctorsProvider'
 import useTitle from '../../hooks/useTitle'
 
 const Register = () => {
-  const { register, updateDoctorProfile } = useContext(DoctorsContext)
+  const { register, updateDoctorProfile,loader } = useContext(DoctorsContext)
   useTitle('Register')
   const handleRegister = (e) => {
     e.preventDefault()
@@ -48,6 +48,9 @@ const Register = () => {
         bis_skin_checked='1'
       >
         <h1 className='text-2xl font-bold text-center'>Register</h1>
+        {
+          loader ? <><h1>please wait</h1></> : <>
+          
         <form
           onSubmit={handleRegister}
           action=''
@@ -96,6 +99,8 @@ const Register = () => {
             Register
           </button>
         </form>
+          </>
+        }
         <div className='flex items-center pt-4 space-x-1' bis_skin_checked='1'>
           <div
             className='flex-1 h-px sm:w-16 dark:bg-gray-700'

@@ -12,12 +12,12 @@ const ServiceAndReview = () => {
   // const [review, setReview] = useState([])
   const { description, img, price, rating, title, treatment, service_id } =
     serviceLoader
-// console.log(service_id)
-//   useEffect(() => {
-//     fetch(`http://localhost:5000/reviews?service-id=${service_id}`)
-//       .then((res) => res.json())
-//       .then((data) =>console.log(data))
-//   }, [])
+  // console.log(service_id)
+  //   useEffect(() => {
+  //     fetch(`https://cardiologists-master-server.vercel.app/reviews?service-id=${service_id}`)
+  //       .then((res) => res.json())
+  //       .then((data) =>console.log(data))
+  //   }, [])
 
   return (
     <div className='grid lg:grid-cols-2 grid-cols-1'>
@@ -46,14 +46,14 @@ const ServiceAndReview = () => {
           </div>
         </div>
         <div bis_skin_checked='1'>
-        <PhotoProvider>
+          <PhotoProvider>
             <PhotoView src={img}>
-          <img
-            src={img}
-            alt=''
-            className='object-cover w-full mb-4 h-60 sm:h-96 dark:bg-gray-500'
+              <img
+                src={img}
+                alt=''
+                className='object-cover w-full mb-4 h-60 sm:h-96 dark:bg-gray-500'
               />
-              </PhotoView>
+            </PhotoView>
           </PhotoProvider>
           <h2 className='mb-1 text-xl font-semibold'>{title}</h2>
           <p className='text-sm dark:text-gray-400'>{description}</p>
@@ -63,16 +63,22 @@ const ServiceAndReview = () => {
             Treatment
           </h1>
           <hr />
-          {serviceLoader?.treatment ? treatment.map((tr) => (
-            <p key={tr.idx}>
-              <span>
-                <ul className='m-3'>
-                  <li className='text-2xl font-bold text-center'>{tr.name} </li>
-                  <li>{tr.details}</li>
-                </ul>
-              </span>
-            </p>
-          )):<></>}
+          {serviceLoader?.treatment ? (
+            treatment.map((tr) => (
+              <p key={tr.idx}>
+                <span>
+                  <ul className='m-3'>
+                    <li className='text-2xl font-bold text-center'>
+                      {tr.name}{' '}
+                    </li>
+                    <li>{tr.details}</li>
+                  </ul>
+                </span>
+              </p>
+            ))
+          ) : (
+            <></>
+          )}
         </div>
         <div className='flex flex-wrap justify-between' bis_skin_checked='1'>
           <div className='space-x-2' bis_skin_checked='1'>
@@ -134,10 +140,9 @@ const ServiceAndReview = () => {
           </div>
         </div>
       </div>
-          <div>
-             
-          <ReviewServicePage></ReviewServicePage>
-          </div>
+      <div>
+        <ReviewServicePage></ReviewServicePage>
+      </div>
     </div>
   )
 }

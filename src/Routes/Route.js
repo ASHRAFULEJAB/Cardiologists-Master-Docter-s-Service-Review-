@@ -28,7 +28,9 @@ export const router = createBrowserRouter([
         path: '/services/:id',
         element: <ServiceAndReview></ServiceAndReview>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(
+            `https://cardiologists-master-server.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: '/blog',
@@ -44,15 +46,23 @@ export const router = createBrowserRouter([
       },
       {
         path: '/my-reviews',
-        element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <MyReviews></MyReviews>
+          </PrivateRoute>
+        ),
       },
       {
         path: '/reviews/:id',
-        element:<UpdateReview></UpdateReview>
+        element: <UpdateReview></UpdateReview>,
       },
       {
         path: '/add-service',
-        element: <PrivateRoute><AddService></AddService></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AddService></AddService>
+          </PrivateRoute>
+        ),
       },
     ],
   },

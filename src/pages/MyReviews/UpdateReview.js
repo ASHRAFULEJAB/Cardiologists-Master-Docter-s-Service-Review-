@@ -4,30 +4,28 @@ import { Navigate, useNavigate, useParams } from 'react-router-dom'
 const UpdateReview = () => {
   const router = useParams()
   const navigate = useNavigate()
-    const { id } = router
-    console.log(id)
+  const { id } = router
+  console.log(id)
   const [doctorReview, setDoctorReview] = useState([])
 
-  
   const handleUpdate = (e) => {
     e.preventDefault()
     const form = e.target
     const message = form.message.value
-    const  reviews = {
-        message,
+    const reviews = {
+      message,
     }
-    fetch(`http://localhost:5000/reviews/${id}`, {
+    fetch(`https://cardiologists-master-server.vercel.app/reviews/${id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
       },
-      body: JSON.stringify( reviews),
+      body: JSON.stringify(reviews),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.modifiedCount> 0) {
-            navigate("/my-reviews")
-         
+        if (data.modifiedCount > 0) {
+          navigate('/my-reviews')
         }
         console.log(data)
       })
@@ -45,11 +43,11 @@ const UpdateReview = () => {
           placeholder='Type here'
           className='input input-bordered input-primary w-full max-w-xs'
         />
-      <div className='text-right'>
-        <button className='py-3 px-8 bg-green-400 text-white font-bold'>
-          Add
-        </button>
-      </div>
+        <div className='text-right'>
+          <button className='py-3 px-8 bg-green-400 text-white font-bold'>
+            Add
+          </button>
+        </div>
       </div>
     </form>
   )

@@ -12,7 +12,7 @@ const Home = () => {
   useTitle('Home')
 
   useEffect(() => {
-    fetch('http://localhost:5000/services-home')
+    fetch('https://cardiologists-master-server.vercel.app/services-home')
       .then((res) => res.json())
       .then((data) => setServices(data))
   }, [])
@@ -91,16 +91,16 @@ const Home = () => {
       </div>
       <div className='carousel w-full'>
         <div id='item1' className='carousel-item w-full'>
-          <img  src={imgae1}  alt=""className='w-full' />
+          <img src={imgae1} alt='' className='w-full' />
         </div>
         <div id='item2' className='carousel-item w-full'>
-          <img src={imgae2}  alt="" className='w-full' />
+          <img src={imgae2} alt='' className='w-full' />
         </div>
         <div id='item3' className='carousel-item w-full'>
-          <img src={imgae3}  alt="" className='w-full' />
+          <img src={imgae3} alt='' className='w-full' />
         </div>
         <div id='item4' className='carousel-item w-full'>
-          <img src={imgae4}  alt="" className='w-full' />
+          <img src={imgae4} alt='' className='w-full' />
         </div>
       </div>
       <div className='flex justify-center w-full py-2 gap-2'>

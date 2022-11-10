@@ -27,7 +27,7 @@ const ReviewServicePage = ({ reviews }) => {
       message,
     }
 
-    fetch('http://localhost:5000/reviews', {
+    fetch('https://cardiologists-master-server.vercel.app/reviews', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -53,11 +53,12 @@ const ReviewServicePage = ({ reviews }) => {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews/${_id}`)
+    fetch(`https://cardiologists-master-server.vercel.app/reviews/${_id}`)
       .then((res) => res.json())
       .then((data) => {
+        // const newData = [...servicePage, data]
+        setReviewDetails([data])
         console.log(data)
-        setReviewDetails(data)
       })
   }, [_id])
   return (
@@ -222,24 +223,22 @@ const ReviewServicePage = ({ reviews }) => {
           </Link>
         </div>
       </div>
-      
-        {reviewDetails.length === 0 ? (
-          <>
-            <h1 className='text-center text-3xl font-bold text-red-600'>
-              No reviews were added
-            </h1>
-          </>
-        ) : (
-          <>
-            {reviewDetails.map((details) => (
-              <ServicePageReview
-                key={details._id}
-                details={details}
-              ></ServicePageReview>
-            ))}
-          </>
-        )}
-    
+      {reviewDetails.length === 0 ? (
+        <>
+          <h1 className='text-center text-3xl font-bold text-red-600'>
+            No reviews were added
+          </h1>
+        </>
+      ) : (
+        <>
+          {reviewDetails.map((details) => (
+            <ServicePageReview
+              key={details._id}
+              details={details}
+            ></ServicePageReview>
+          ))}
+        </>
+      )}
     </>
   )
 }
