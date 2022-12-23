@@ -16,6 +16,14 @@ const Services = () => {
         setServicesPage(data)
       })
   }, [])
+  if (loader) {
+    return (
+      <div
+        className='w-16 h-16 my-5 mx-auto border-4 border-dashed rounded-full animate-spin dark:border-violet-400'
+        bis_skin_checked='1'
+      ></div>
+    )
+  }
   return (
     <div className='grid lg:grid-cols-3 grid-cols-1'>
       {loader ? (

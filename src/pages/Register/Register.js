@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Lottie from 'lottie-react'
 import cardiologists2 from '../../assets/cardiologist2.json'
@@ -6,8 +6,11 @@ import { DoctorsContext } from '../../Context/DoctorsContext/DoctorsProvider'
 import useTitle from '../../hooks/useTitle'
 
 const Register = () => {
-  const { register, updateDoctorProfile,loader } = useContext(DoctorsContext)
+  const { register, updateDoctorProfile, loader, setLoader } =
+    useContext(DoctorsContext)
   useTitle('Register')
+
+  const [error,setError]=useState('')
   const handleRegister = (e) => {
     e.preventDefault()
     const form = e.target
@@ -20,10 +23,12 @@ const Register = () => {
         const user = result.user
         console.log(user)
         form.reset()
+        setLoader(false)
         doctorProfileUpdate(name)
       })
       .catch((e) => {
         console.log(e)
+        setError(e?.message)
       })
   }
 
@@ -40,32 +45,39 @@ const Register = () => {
       })
       .catch((e) => console.log(e.message))
   }
+  if (loader) {
+    return (
+      <div
+        className='w-16 h-16 my-5 mx-auto border-4 border-dashed rounded-full animate-spin dark:border-violet-400'
+        bis_skin_checked='1'
+      ></div>
+    )
+  }
 
   return (
     <div className='grid lg:grid-cols-2 grid-cols-1'>
       <div
-        className='w-full max-w-md p-8 m-5 lg:ml-24 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100'
+        className='w-full max-w-md p-8 mt-3 lg:ml-24 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100'
         bis_skin_checked='1'
       >
         <h1 className='text-2xl font-bold text-center'>Register</h1>
-        {
-          loader ? <><h1>please wait</h1></> : <>
-          
+
         <form
           onSubmit={handleRegister}
           action=''
           className='space-y-6 ng-untouched ng-pristine ng-valid'
         >
           <div className='space-y-1 text-sm' bis_skin_checked='1'>
-            <label htmlFor='username' className='block dark:text-gray-400'>
+            <label htmlFor='username' className='block dark:text-gray-400 '>
               Name
             </label>
             <input
               type='text'
               name='name'
               id='username'
+              required
               placeholder='Enter Your Name'
-              className='w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400'
+              className='w-full px-4 py-3 rounded-md border dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400'
             />
           </div>
           <div className='space-y-1 text-sm' bis_skin_checked='1'>
@@ -76,8 +88,9 @@ const Register = () => {
               type='text'
               name='email'
               id='username'
+              required
               placeholder='Enter Your Email'
-              className='w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400'
+              className='w-full px-4 py-3 rounded-md border dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400'
             />
           </div>
           <div className='space-y-1 text-sm' bis_skin_checked='1'>
@@ -88,19 +101,22 @@ const Register = () => {
               type='password'
               name='password'
               id='password'
+              required
               placeholder='Password'
-              className='w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400'
+              className='w-full px-4 py-3 rounded-md border dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400'
             />
           </div>
           <button
             type='submit'
-            className='block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400'
+            className='block w-full p-3 text-center rounded-sm dark:text-gray-100 dark:bg-violet-700'
           >
-            Register
+            
+              Register
+            
           </button>
+          <p className="red-700">{ error}</p>
         </form>
-          </>
-        }
+
         <div className='flex items-center pt-4 space-x-1' bis_skin_checked='1'>
           <div
             className='flex-1 h-px sm:w-16 dark:bg-gray-700'

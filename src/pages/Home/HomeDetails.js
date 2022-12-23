@@ -121,7 +121,7 @@ const HomeDetails = () => {
             </span>
             <div className='h-1 ml-auto duration-300 origin-left transform bg-purple-400 scale-x-30 group-hover:scale-x-100' />
           </h2>
-          <p className='text-gray-700 lg:text-sm lg:max-w-md'>
+          <p className='text-gray-700 font-bold lg:text-2xl lg:max-w-md'>
             "Meet some of our happliy recovered client.Thanks"
           </p>
         </div>

@@ -4,7 +4,7 @@ import { DoctorsContext } from '../../Context/DoctorsContext/DoctorsProvider'
 import ServicePageReview from './ServicePageReview'
 
 const ReviewServicePage = ({ reviews }) => {
-  const { userDoctor } = useContext(DoctorsContext)
+  const { userDoctor,loader } = useContext(DoctorsContext)
   const serviceLoader = useLoaderData()
 
   const { _id, description, img, price, rating, title, treatment, service_id } =
@@ -61,6 +61,14 @@ const ReviewServicePage = ({ reviews }) => {
         console.log(data)
       })
   }, [_id])
+  if (loader) {
+    return (
+      <div
+        className='w-16 h-16 my-5 mx-auto border-4 border-dashed rounded-full animate-spin dark:border-violet-400'
+        bis_skin_checked='1'
+      ></div>
+    )
+  }
   return (
     <>
       {' '}
@@ -167,7 +175,7 @@ const ReviewServicePage = ({ reviews }) => {
                       name='name'
                       id='username'
                       placeholder='Enter Your Name'
-                      className='w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400'
+                      className='w-full px-10 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400 border'
                     />
                   </div>
                   <div className='space-y-1 text-sm' bis_skin_checked='1'>
@@ -183,19 +191,19 @@ const ReviewServicePage = ({ reviews }) => {
                       id='username'
                       defaultValue={userDoctor?.email}
                       placeholder='Enter Your Email'
-                      className='w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400'
+                      className='w-full px-10 border py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400'
                     />
                   </div>
                   <textarea
                     rows='3'
                     name='message'
                     placeholder='Message...'
-                    className='p-4  mt-3 rounded-md resize-none dark:text-gray-100 dark:bg-gray-900'
+                    className='py-4 px-10 border  mt-3 rounded-md resize-none dark:text-gray-100 dark:bg-gray-900'
                   ></textarea>
 
                   <button
                     type='submit'
-                    className='py-4 my-8 font-semibold rounded-md dark:text-gray-900 dark:bg-violet-400'
+                    className='py-4 my-8 font-semibold rounded-md dark:text-gray-100 dark:bg-violet-700'
                   >
                     Leave feedback
                   </button>

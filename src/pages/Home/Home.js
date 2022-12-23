@@ -6,9 +6,12 @@ import imgae3 from '../../assets/images/pic3.jpg'
 import imgae4 from '../../assets/images/pic4.jpg'
 import useTitle from '../../hooks/useTitle'
 import HomeDetails from './HomeDetails'
+import { useContext } from 'react'
+import { DoctorsContext } from '../../Context/DoctorsContext/DoctorsProvider'
 
 const Home = () => {
   const [services, setServices] = useState([])
+  const {loader}=useContext(DoctorsContext)
   useTitle('Home')
 
   useEffect(() => {
@@ -16,6 +19,14 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => setServices(data))
   }, [])
+  if (loader) {
+    return (
+      <div
+        className='w-16 h-16 my-5 mx-auto border-4 border-dashed rounded-full animate-spin dark:border-violet-400'
+        bis_skin_checked='1'
+      ></div>
+    )
+  }
 
   return (
     <>

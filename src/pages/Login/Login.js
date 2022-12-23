@@ -8,13 +8,13 @@ import { setReviewAuthToken } from '../../utils/reviewAuth'
 import useTitle from '../../hooks/useTitle'
 
 const Login = () => {
-  const { userLogin, GoogleLogin ,loader } = useContext(DoctorsContext)
+  const { userLogin, GoogleLogin, loader } = useContext(DoctorsContext)
   const googleProvider = new GoogleAuthProvider()
   useTitle('Login')
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
- 
+
   const handleUserLogin = (e) => {
     e.preventDefault()
     const form = e.target
@@ -50,16 +50,22 @@ const Login = () => {
         console.log(e)
       })
   }
+  if (loader) {
+    return (
+      <div
+        className='w-16 h-16 my-5 mx-auto border-4 border-dashed rounded-full animate-spin dark:border-violet-400'
+        bis_skin_checked='1'
+      ></div>
+    )
+  }
   return (
     <div className='grid lg:grid-cols-2 grid-cols-1'>
       <div
-        className='w-full max-w-md p-8 m-5 lg:ml-24 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100'
+        className='w-full max-w-md p-8 mt-5 lg:ml-24 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100'
         bis_skin_checked='1'
       >
         <h1 className='text-2xl font-bold text-center'>Login</h1>
-        {
-          loader ? <><h1>Loading...</h1></> : <>
-            
+
         <form
           onSubmit={handleUserLogin}
           action=''
@@ -73,8 +79,9 @@ const Login = () => {
               type='text'
               name='email'
               id='username'
+              required
               placeholder='Enter Your Email'
-              className='w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400'
+              className='w-full px-4 py-3 rounded-md border dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400'
             />
           </div>
           <div className='space-y-1 text-sm' bis_skin_checked='1'>
@@ -85,8 +92,9 @@ const Login = () => {
               type='password'
               name='password'
               id='password'
+              required
               placeholder='Password'
-              className='w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400'
+              className='w-full px-4 py-3 rounded-md border dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400'
             />
             <div
               className='flex justify-end text-xs dark:text-gray-400'
@@ -99,13 +107,12 @@ const Login = () => {
           </div>
           <button
             type='submit'
-            className='block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400'
+            className='block w-full p-3 text-center rounded-sm dark:text-gray-100 dark:bg-violet-700'
           >
             Log in
           </button>
         </form>
-    </>
-}
+
         <div className='flex items-center pt-4 space-x-1' bis_skin_checked='1'>
           <div
             className='flex-1 h-px sm:w-16 dark:bg-gray-700'
