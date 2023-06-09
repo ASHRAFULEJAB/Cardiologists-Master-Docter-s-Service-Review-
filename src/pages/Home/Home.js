@@ -1,31 +1,36 @@
-import React, { useEffect, useState } from 'react'
-import ServicesHomePage from '../Services/ServicesHomePage'
-import imgae1 from '../../assets/images/pic1.jpg'
-import imgae2 from '../../assets/images/pic2.png'
-import imgae3 from '../../assets/images/pic3.jpg'
-import imgae4 from '../../assets/images/pic4.jpg'
-import useTitle from '../../hooks/useTitle'
-import HomeDetails from './HomeDetails'
-import { useContext } from 'react'
-import { DoctorsContext } from '../../Context/DoctorsContext/DoctorsProvider'
+import React, { useEffect, useState } from "react";
+import ServicesHomePage from "../Services/ServicesHomePage";
+import imgae1 from "../../assets/images/hero1.png";
+import imgae2 from "../../assets/images/pic2.png";
+import imgae3 from "../../assets/images/pic3.jpg";
+import imgae4 from "../../assets/images/pic4.jpg";
+import useTitle from "../../hooks/useTitle";
+import HomeDetails from "./HomeDetails";
+import { useContext } from "react";
+import { DoctorsContext } from "../../Context/DoctorsContext/DoctorsProvider";
+import Carosoul from "./Carosoul";
+import DoctorIntro from "./DoctorIntro";
+import Team from "./Team";
+import Help from "./Help";
+import Blog from "./Blog";
 
 const Home = () => {
-  const [services, setServices] = useState([])
-  const {loader}=useContext(DoctorsContext)
-  useTitle('Home')
+  const [services, setServices] = useState([]);
+  const { loader } = useContext(DoctorsContext);
+  useTitle("Home");
 
   useEffect(() => {
-    fetch('https://cardiologists-master-server.vercel.app/services-home')
+    fetch("https://cardiologists-master-server.vercel.app/services-home")
       .then((res) => res.json())
-      .then((data) => setServices(data))
-  }, [])
+      .then((data) => setServices(data));
+  }, []);
   if (loader) {
     return (
       <div
-        className='w-16 h-16 my-5 mx-auto border-4 border-dashed rounded-full animate-spin dark:border-violet-400'
-        bis_skin_checked='1'
+        className="w-16 h-16 my-5 mx-auto border-4 border-dashed rounded-full animate-spin dark:border-violet-400"
+        bis_skin_checked="1"
       ></div>
-    )
+    );
   }
 
   return (
@@ -92,7 +97,12 @@ const Home = () => {
           </div>
         </div>
       </div> */}
-      <div className='grid lg:grid-cols-3 grid-cols-1'>
+      <div>
+        <img src={imgae1} alt="" />
+      </div>
+      {/* Carosoule */}
+      <Carosoul />
+      <div className="grid lg:grid-cols-3 grid-cols-1">
         {services.map((service) => (
           <ServicesHomePage
             key={service._id}
@@ -100,37 +110,13 @@ const Home = () => {
           ></ServicesHomePage>
         ))}
       </div>
-      <div className='carousel w-full'>
-        <div id='item1' className='carousel-item w-full'>
-          <img src={imgae1} alt='' className='w-full' />
-        </div>
-        <div id='item2' className='carousel-item w-full'>
-          <img src={imgae2} alt='' className='w-full' />
-        </div>
-        <div id='item3' className='carousel-item w-full'>
-          <img src={imgae3} alt='' className='w-full' />
-        </div>
-        <div id='item4' className='carousel-item w-full'>
-          <img src={imgae4} alt='' className='w-full' />
-        </div>
-      </div>
-      <div className='flex justify-center w-full py-2 gap-2'>
-        <a href='#item1' className='btn btn-xs'>
-          1
-        </a>
-        <a href='#item2' className='btn btn-xs'>
-          2
-        </a>
-        <a href='#item3' className='btn btn-xs'>
-          3
-        </a>
-        <a href='#item4' className='btn btn-xs'>
-          4
-        </a>
-      </div>
+      <DoctorIntro />
+      <Team />
+      <Help />
       <HomeDetails></HomeDetails>
+      <Blog />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
