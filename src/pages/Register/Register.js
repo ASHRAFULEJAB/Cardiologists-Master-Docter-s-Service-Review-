@@ -55,77 +55,75 @@ const Register = () => {
   }
 
   return (
-    <div className='grid lg:grid-cols-2 grid-cols-1'>
+    <div className="grid lg:grid-cols-2 grid-cols-1 mb-4">
       <div
-        className='w-full max-w-md p-8 mt-3 lg:ml-24 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100'
-        bis_skin_checked='1'
+        className="w-full max-w-md p-8 mt-3 lg:ml-24 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100"
+        bis_skin_checked="1"
       >
-        <h1 className='text-2xl font-bold text-center'>Register</h1>
+        <h1 className="text-2xl font-bold text-center">Register</h1>
 
         <form
           onSubmit={handleRegister}
-          action=''
-          className='space-y-6 ng-untouched ng-pristine ng-valid'
+          action=""
+          className="space-y-6 ng-untouched ng-pristine ng-valid"
         >
-          <div className='space-y-1 text-sm' bis_skin_checked='1'>
-            <label htmlFor='username' className='block dark:text-gray-400 '>
+          <div className="space-y-1 text-sm" bis_skin_checked="1">
+            <label htmlFor="username" className="block dark:text-gray-400 ">
               Name
             </label>
             <input
-              type='text'
-              name='name'
-              id='username'
+              type="text"
+              name="name"
+              id="username"
               required
-              placeholder='Enter Your Name'
-              className='w-full px-4 py-3 rounded-md border dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400'
+              placeholder="Enter Your Name"
+              className="w-full px-4 py-3 rounded-md border dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
             />
           </div>
-          <div className='space-y-1 text-sm' bis_skin_checked='1'>
-            <label htmlFor='username' className='block dark:text-gray-400'>
+          <div className="space-y-1 text-sm" bis_skin_checked="1">
+            <label htmlFor="username" className="block dark:text-gray-400">
               Email
             </label>
             <input
-              type='text'
-              name='email'
-              id='username'
+              type="text"
+              name="email"
+              id="username"
               required
-              placeholder='Enter Your Email'
-              className='w-full px-4 py-3 rounded-md border dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400'
+              placeholder="Enter Your Email"
+              className="w-full px-4 py-3 rounded-md border dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
             />
           </div>
-          <div className='space-y-1 text-sm' bis_skin_checked='1'>
-            <label htmlFor='password' className='block dark:text-gray-400'>
+          <div className="space-y-1 text-sm" bis_skin_checked="1">
+            <label htmlFor="password" className="block dark:text-gray-400">
               Password
             </label>
             <input
-              type='password'
-              name='password'
-              id='password'
+              type="password"
+              name="password"
+              id="password"
               required
-              placeholder='Password'
-              className='w-full px-4 py-3 rounded-md border dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400'
+              placeholder="Password"
+              className="w-full px-4 py-3 rounded-md border dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
             />
           </div>
           <button
-            type='submit'
-            className='block w-full p-3 text-center rounded-sm dark:text-gray-100 dark:bg-violet-700'
+            type="submit"
+            className="block w-full p-3 text-center rounded-sm dark:text-gray-100 dark:bg-violet-700"
           >
-            
-              Register
-            
+            Register
           </button>
-          <p className="red-700">{ error}</p>
+          <p className="red-700">{error}</p>
         </form>
 
-        <div className='flex items-center pt-4 space-x-1' bis_skin_checked='1'>
+        <div className="flex items-center pt-4 space-x-1" bis_skin_checked="1">
           <div
-            className='flex-1 h-px sm:w-16 dark:bg-gray-700'
-            bis_skin_checked='1'
+            className="flex-1 h-px sm:w-16 dark:bg-gray-700"
+            bis_skin_checked="1"
           ></div>
 
           <div
-            className='flex-1 h-px sm:w-16 dark:bg-gray-700'
-            bis_skin_checked='1'
+            className="flex-1 h-px sm:w-16 dark:bg-gray-700"
+            bis_skin_checked="1"
           ></div>
         </div>
         {/* <div className='flex justify-center space-x-4' bis_skin_checked='1'>
@@ -157,24 +155,24 @@ const Register = () => {
             </svg>
           </button>
         </div> */}
-        <p className='text-xs text-center sm:px-6 dark:text-gray-400'>
+        <p className="text-xs text-center sm:px-6 dark:text-gray-400">
           Already have an account?
           <Link
-            rel='noopener noreferrer'
-            to='/login'
-            className='underline dark:text-gray-100'
+            rel="noopener noreferrer"
+            to="/login"
+            className="underline dark:text-gray-100"
           >
             Login
           </Link>
         </p>
       </div>
-      <div className='relative lg:w-full '>
-        <div className='w-full lg:w-11/12 lg:ml-auto lg:h-72  sm:h-96'>
+      
+        <div className="flex items-center  justify-center h-10 lg:mt-32 lg:mb-0 mb-48 mt-20  w-94% lg:mr-30">
           <Lottie animationData={cardiologists2} loop={true} />
         </div>
-      </div>
+      
     </div>
-  )
+  );
 }
 
 export default Register

@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import blog1 from "../../assets/images/blog1.png";
+import blog2 from "../../assets/images/blog2.png";
+import blog3 from "../../assets/images/blog3.png";
 
 const Blog = () => {
   return (
@@ -22,48 +25,74 @@ const Blog = () => {
             <div>
               <img
                 class="relative z-10 object-cover w-full rounded-md h-96"
-                src="https://images.unsplash.com/photo-1644018335954-ab54c83e007f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                src={blog1}
                 alt=""
               />
 
               <div class="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white rounded-md shadow dark:bg-gray-900">
                 <Link
-                  to="#"
-                  class="font-semibold text-gray-800 hover:underline dark:text-gray-900 md:text-xl"
+                  to="/"
+                  class="font-semibold text-gray-800 hover:underline dark:text-gray-100 md:text-xl"
                 >
-                  All the features you want to know
+                  Examination for kids
                 </Link>
 
                 <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
-                  veritatis sint autem nesciunt, laudantium quia tempore delect
+                  Interactively procrastinate high-payoff content without
+                  backward-compatible data. Quickly cultivate optimal processes
+                  and tactical architectures.
                 </p>
 
-                <p class="mt-3 text-sm text-blue-500">21 October 2019</p>
+                <p class="mt-3 text-sm text-blue-500">21 October 2022</p>
               </div>
             </div>
 
             <div>
               <img
                 class="relative z-10 object-cover w-full rounded-md h-96"
-                src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                src={blog2}
                 alt=""
               />
 
               <div class="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white rounded-md shadow dark:bg-gray-900">
                 <Link
                   to="#"
-                  class="font-semibold text-gray-800 hover:underline dark:text-gray-900 md:text-xl"
+                  class="font-semibold text-gray-800 hover:underline dark:text-gray-100 md:text-xl"
                 >
-                  How to use sticky note for problem solving
+                  Special offers for clients
                 </Link>
 
                 <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
-                  veritatis sint autem nesciunt, laudantium quia tempore delect
+                  Globally incubate standards compliant channels before scalable
+                  benefits. Quickly disseminate superior deliverables whereas
+                  web-enabled applications.
                 </p>
 
-                <p class="mt-3 text-sm text-blue-500">20 October 2019</p>
+                <p class="mt-3 text-sm text-blue-500">20 October 2021</p>
+              </div>
+            </div>
+            <div>
+              <img
+                class="relative z-10 object-cover w-full rounded-md h-96"
+                src={blog3}
+                alt=""
+              />
+
+              <div class="relative z-20 max-w-lg p-6 mx-auto -mt-20 bg-white rounded-md shadow dark:bg-gray-900">
+                <Link
+                  to="#"
+                  class="font-semibold text-gray-800 hover:underline dark:text-gray-100 md:text-xl"
+                >
+                  New services available
+                </Link>
+
+                <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                  Credibly reintermediate backend ideas for cross-platform
+                  models. Continually reintermediate integrated processes
+                  through technically sound intellectual capital.
+                </p>
+
+                <p class="mt-3 text-sm text-blue-500">24 May 2023</p>
               </div>
             </div>
           </div>

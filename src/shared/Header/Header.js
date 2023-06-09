@@ -110,7 +110,8 @@ const Header = () => {
                 </li>
                 <button
                   onClick={handleLogout}
-                  className='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-700 hover:bg-purple-800 focus:shadow-outline focus:outline-none'
+                  className='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide 
+                  text-white transition duration-200 rounded shadow-md bg-purple-700 hover:bg-purple-800 focus:shadow-outline focus:outline-none'
                 >
                   LogOut
                 </button>
@@ -140,7 +141,7 @@ const Header = () => {
               </>
             )}
           </ul>
-          <div className='lg:hidden'>
+          <div className='lg:hidden mb-28'>
             <button
               aria-label='Open Menu'
               title='Open Menu'
@@ -275,7 +276,9 @@ const Header = () => {
                           </li>
                           <button
                             onClick={handleLogout}
-                            className='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
+                            className='inline-flex items-center justify-center h-12 px-6 font-medium
+                             tracking-wide text-white transition duration-200 rounded shadow-md
+                              bg-purple-700 hover:bg-purple-800 focus:shadow-outline focus:outline-none'
                           >
                             LogOut
                           </button>
@@ -287,7 +290,9 @@ const Header = () => {
                               to='/login'
                               aria-label='Sign in'
                               title='log in'
-                              className='inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
+                              className='inline-flex items-center justify-center w-full h-12 px-6 font-medium
+                               tracking-wide text-white transition duration-200 rounded shadow-md 
+                               bg-purple-700 hover:bg-purple-800 focus:shadow-outline focus:outline-none'
                             >
                               Log in
                             </Link>
@@ -295,7 +300,9 @@ const Header = () => {
                           <li>
                             <Link
                               to='/register'
-                              className='inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
+                              className='inline-flex items-center justify-center w-full h-12 px-6 
+                              font-medium tracking-wide text-white transition duration-200 rounded 
+                              shadow-md bg-purple-700 hover:bg-purple-800 focus:shadow-outline focus:outline-none'
                               aria-label='Sign up'
                               title='register'
                             >

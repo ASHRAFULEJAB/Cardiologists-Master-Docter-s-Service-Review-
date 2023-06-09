@@ -59,7 +59,7 @@ const Login = () => {
     )
   }
   return (
-    <div className='grid lg:grid-cols-2 grid-cols-1'>
+    <div className='grid lg:grid-cols-2 grid-cols-1 mb-4'>
       <div
         className='w-full max-w-md p-8 mt-5 lg:ml-24 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100'
         bis_skin_checked='1'

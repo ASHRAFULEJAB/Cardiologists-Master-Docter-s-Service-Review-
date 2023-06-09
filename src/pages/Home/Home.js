@@ -13,6 +13,7 @@ import DoctorIntro from "./DoctorIntro";
 import Team from "./Team";
 import Help from "./Help";
 import Blog from "./Blog";
+import Communication from "./Communication";
 
 const Home = () => {
   const [services, setServices] = useState([]);
@@ -115,6 +116,7 @@ const Home = () => {
       <Help />
       <HomeDetails></HomeDetails>
       <Blog />
+      <Communication />
     </>
   );
 };
